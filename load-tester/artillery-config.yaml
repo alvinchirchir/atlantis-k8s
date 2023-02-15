@@ -1,0 +1,12 @@
+config:
+  target: 'http://localhost:30259'
+  phases:
+    - duration: 600
+      arrivalRate: 5
+      rampTo: 5
+
+scenarios:
+  - name: 'Trigger autoscaler'
+    flow:
+      - get:
+          url: '/fibo'

@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: atlantis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: atlantis
+  template:
+    metadata:
+      labels:
+        app: atlantis
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/path: /metrics
+        prometheus.io/port: '4000'
+    spec:
+      containers:
+        - name: atlantis
+          image: alvinchirchir/atlantis
+          ports:
+            - containerPort: 4000
+              protocol: TCP
+          env:
+            - name: PORT
+              value: '4000'
+            - name: FIBONACCI
+              value: '1400'

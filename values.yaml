@@ -1,0 +1,15 @@
+prometheus:
+  alertmanager:
+    enabled: false
+
+  pushgateway:
+    enabled: false
+
+  nodeExporter:
+    enabled: false
+  service:
+    type: NodePort
+
+grafana:
+  service:
+    type: NodePort
